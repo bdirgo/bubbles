@@ -13,7 +13,7 @@ function mousePressed() {
   for (let i = balls.length - 1; i >= 0; i--) {
     const ball = balls[i];
     if (ball.contains(mouseX, mouseY)) {
-      ball.noRender();
+      balls.splice(i, 1);
     } else {
       // const b = new Ball(mouseX, mouseY, random(BALL_WIDTH_MIN, BALL_WIDTH_MAX), balls.length);
       // balls.push(b); // causes a billion balls to spawn XD
@@ -42,10 +42,8 @@ function draw() {
   background(0);
 
   balls.forEach(ball => {
-    if (ball.shouldRender) {
-      ball.collide();
-      ball.move();
-      ball.display();
-    }
+    ball.collide();
+    ball.move();
+    ball.display();
   });
 }

@@ -10,7 +10,6 @@ class Ball {
     this.vy = 0;
     this.diameter = din;
     this.id = idin;
-    this.shouldRender = true;
   }
 
   collide() {
@@ -41,9 +40,6 @@ class Ball {
     } else {
       return false;
     }
-  }
-  noRender() {
-    this.shouldRender = false;
   }
 
   move() {
@@ -79,11 +75,9 @@ class Ball {
   }
 
   display() {
-    if (this.shouldRender) {
-      stroke(255);
-      strokeWeight(4);
-      fill(255, 204);
-      ellipse(this.x, this.y, this.diameter, this.diameter);
-    }
+    stroke(255);
+    strokeWeight(4);
+    fill(255, 204);
+    ellipse(this.x, this.y, this.diameter, this.diameter);
   }
 }
