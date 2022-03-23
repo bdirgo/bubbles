@@ -10,29 +10,13 @@ document.ontouchmove = function(event) {
     event.preventDefault();
 }
 
-// function setup() {
-//   createCanvas(720, 400);
-//   for (let i = 0; i < numBalls; i++) {
-//     balls[i] = new Ball(
-//       random(width),
-//       random(height),
-//       random(30, 70),
-//       i,
-//       balls
-//     );
-//   }
-//   noStroke();
-//   fill(255, 204);
-// }
-
-// function draw() {
-//   background(0);
-//   balls.forEach(ball => {
-//     ball.collide();
-//     ball.move();
-//     ball.display();
-//   });
-// }
+function mousePressed() {
+  for (let i = balls.length - 1; i >= 0; i--) {
+    if (balls[i].contains(mouseX, mouseY)) {
+      balls.splice(i, 1);
+    }
+  }
+}
 
 class Ball {
   constructor(xin, yin, din, idin, oin) {
@@ -70,12 +54,12 @@ class Ball {
   }
 
   move() {
-    const dx = constrain(rotationY, -3, 3);
-    const dy = constrain(rotationX, -3, 3);
+    const dx = constrain(rotationY, -5, 5);
+    const dy = constrain(rotationX, -5, 5);
     if (dy > dx) {
-      this.vy += gravity;
+      this.vy += gravity * dy;
     } else {
-      this.vx += gravity;
+      this.vx += gravity * dx;
     }
     this.x += this.vx;
     this.y += this.vy;
@@ -106,11 +90,12 @@ class Ball {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   ios13DeviceOrientation();
+  background(0);
   for (let i = 0; i < numBalls; i++) {
     balls[i] = new Ball(
       random(width),
       random(height),
-      random(30, 70),
+      random(80, 200),
       i,
       balls
     );
@@ -122,9 +107,6 @@ function draw() {
     return;
   }
   background(0);
-  // textSize(72);
-  // text(rotationX, 100, 100);
-
 
   balls.forEach(ball => {
     ball.collide();
