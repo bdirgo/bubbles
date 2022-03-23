@@ -1,4 +1,4 @@
-let initialNumBalls = 25;
+let initialNumBalls = 12;
 const BALL_WIDTH_MIN = 40
 const BALL_WIDTH_MAX = 80;
 let balls = [];
@@ -19,6 +19,20 @@ function mousePressed() {
       // balls.push(b); // causes a billion balls to spawn XD
     }
   }
+  return false
+}
+
+function mouseDragged() {
+  if (frameCount % 10 == 0) {
+    const b = new Ball(
+      mouseX,
+      mouseY,
+      random(BALL_WIDTH_MIN, BALL_WIDTH_MAX),
+      balls.length - 1
+    )
+    balls.push(b)
+  }
+  return false
 }
 
 function setup() {
