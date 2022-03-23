@@ -72,9 +72,13 @@ class Ball {
   move() {
     const dx = constrain(rotationY, -3, 3);
     const dy = constrain(rotationX, -3, 3);
-    this.vy += gravity;
-    this.x += this.vx + dx;
-    this.y += this.vy + dy;
+    if (dy > dx) {
+      this.vy += gravity;
+    } else {
+      this.vx += gravity;
+    }
+    this.x += this.vx;
+    this.y += this.vy;
     if (this.x + this.diameter / 2 > width) {
       this.x = width - this.diameter / 2;
       this.vx *= friction;
