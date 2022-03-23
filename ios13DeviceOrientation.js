@@ -11,7 +11,7 @@ function requestPermission() {
       this.remove();
 }
 function ios13DeviceOrientation() {
-  if (typeof(DeviceOrientationEvent) !== undefined && typeof(DeviceOrientationEvent.requestPermission) === 'function') {
+  if (typeof(window?.DeviceOrientationEvent) !== undefined && typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function') {
     // iOS 13+
     DeviceOrientationEvent.requestPermission()
       .catch(() => {
@@ -27,5 +27,7 @@ function ios13DeviceOrientation() {
         // Already granted permission
         permissionGranted = true;
       });
+  } else {
+    permissionGranted = true;
   }
 }
