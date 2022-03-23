@@ -8,7 +8,6 @@ const BALL_WIDTH_MAX = 80;
 let balls = [];
 // ios13
 let permissionGranted = false;
-let button;
 // don't move!
 document.ontouchmove = function(event) {
     event.preventDefault();
