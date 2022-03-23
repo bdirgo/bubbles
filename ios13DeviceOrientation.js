@@ -17,22 +17,22 @@ function ios13DeviceOrientation() {
     typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function'
   ) {
     // iOS 13+
-    DeviceOrientationEvent.requestPermission()
-      .catch(() => {
+    // DeviceOrientationEvent.requestPermission()
+    //   .catch(() => {
         // Only show permission dialog on first load, the browser will remember request after "allow"-ing
         button = createButton("Click to Allow sensor access");
         button.style('font-size', "38px");
         button.center();
         button.mousePressed(requestAccess);
-        // Skip "then"
-        throw new Error('Ask for the first time');
-      })
-      .catch(console.error)
-      .then(() => {
-        console.log("then");
-        // Already granted permission
-        permissionGranted = true;
-      });
+      //   // Skip "then"
+      //   throw new Error('Ask for the first time');
+      // })
+      // .catch(console.error)
+      // .then(() => {
+      //   console.log("then");
+      //   // Already granted permission
+      //   permissionGranted = true;
+      // });
   } else {
     console.log("else");
     permissionGranted = true;
