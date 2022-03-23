@@ -53,6 +53,15 @@ class Ball {
     }
   }
 
+  contains(px, py) {
+    let d = dist(px, py, this.x, this.y);
+    if (d < (this.diameter / 2)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   move() {
     const dx = constrain(rotationY, -5, 5);
     const dy = constrain(rotationX, -5, 5);
@@ -95,7 +104,7 @@ function setup() {
     balls[i] = new Ball(
       random(width),
       random(height),
-      random(80, 200),
+      random(60, 100),
       i,
       balls
     );
