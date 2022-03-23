@@ -144,6 +144,10 @@ function setup() {
 }
 
 function draw() {
+  if (!permissionGranted) {
+    return;
+  }
+  background(255);
   textSize(72);
   text(rotationX, 100, 100);
 }
