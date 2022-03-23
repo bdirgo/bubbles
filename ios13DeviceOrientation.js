@@ -14,26 +14,26 @@ function requestPermission() {
   this.remove();
 }
 function ios13DeviceOrientation() {
-if (typeof(window?.DeviceOrientationEvent) !== undefined && typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function') {
-  console.log("if");
-  // iOS 13+
-  DeviceOrientationEvent.requestPermission()
-    .catch(() => {
-      // Only show permission dialog on first load, the browser will remember request after "allow"-ing
-      let button = createButton("Click to Allow sensor access");
-      button.style('font-size', "38px");
-      button.center();
-      button.mousePressed(requestPermission);
-      // Skip "then"
-      console.log("button");
-    })
-    .then(() => {
-      console.log("then");
-      // Already granted permission
-      permissionGranted = true;
-    });
-} else {
-  console.log("else");
-  permissionGranted = true;
-}
+  if (typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function') {
+    console.log("if");
+    // iOS 13+
+    DeviceOrientationEvent.requestPermission()
+      .catch(() => {
+        // Only show permission dialog on first load, the browser will remember request after "allow"-ing
+        let button = createButton("Click to Allow sensor access");
+        button.style('font-size', "42px");
+        button.center();
+        button.mousePressed(requestPermission);
+        // Skip "then"
+        console.log("button");
+      })
+      .then(() => {
+        console.log("then");
+        // Already granted permission
+        permissionGranted = true;
+      });
+  } else {
+    console.log("else");
+    permissionGranted = true;
+  }
 }
