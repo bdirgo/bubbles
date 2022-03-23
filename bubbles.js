@@ -25,6 +25,7 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   ios13DeviceOrientation();
   background(0);
+  // Initialize the bubble/balls
   for (let i = 0; i < initialNumBalls; i++) {
     balls[i] = new Ball(
       random(width),

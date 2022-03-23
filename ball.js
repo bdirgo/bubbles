@@ -45,14 +45,12 @@ class Ball {
   move() {
     const dx = constrain(rotationY, -5, 5);
     const dy = constrain(rotationX, -5, 5);
-    if (dy > 0) {
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+    if (ay > ax) {
       this.vy += gravity * dy;
-    } else if (dy < 0) {
-      this.vy -= gravity * dy;
-    } else if (dx > 0) {
+    } else if (ax > ay) {
       this.vx += gravity * dx;
-    } else if (dx < 0) {
-      this.vx -= gravity * dx;
     } else {
       this.vy += gravity;
     }
