@@ -1,4 +1,5 @@
-function requestPermission() {
+function requestAccess() {
+  console.log("Asking")
     DeviceOrientationEvent.requestPermission()
       .then(response => {
         if (response === 'granted') {
@@ -22,7 +23,7 @@ function ios13DeviceOrientation() {
         let button = createButton("Click to Allow sensor access");
         button.style('font-size', "38px");
         button.center();
-        button.mousePressed(requestPermission);
+        button.mousePressed(requestAccess);
         // Skip "then"
         throw new Error('Ask for the first time');
       })
