@@ -17,7 +17,7 @@ function ios13DeviceOrientation() {
       .catch(() => {
         // Only show permission dialog on first load, the browser will remember request after "allow"-ing
         let button = createButton("Click to Allow sensor access, please");
-        // button.style('font-size', "42px");
+        button.style('font-size', "42px");
         button.center();
         button.mousePressed(requestPermission);
         // Skip "then"

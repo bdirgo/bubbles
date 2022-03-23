@@ -142,3 +142,8 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   ios13DeviceOrientation();
 }
+
+function draw() {
+  textSize(72);
+  text(rotationX, 100, 100);
+}
