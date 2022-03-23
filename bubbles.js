@@ -1,5 +1,9 @@
+// https://p5js.org/examples/motion-bouncy-bubbles.html
+// And 
+// https://www.youtube.com/watch?v=HerCR8bw_GE&list=PLRqwX-V7Uu6Zy51Q-x9tMWIv9cueOFTFA
+
 let initialNumBalls = 12;
-const BALL_WIDTH_MIN = 40
+const BALL_WIDTH_MIN = 30;
 const BALL_WIDTH_MAX = 80;
 let balls = [];
 // ios13
