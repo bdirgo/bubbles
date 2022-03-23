@@ -14,14 +14,14 @@ function ios13DeviceOrientation() {
   if (typeof(window?.DeviceOrientationEvent) !== undefined && typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function') {
     // iOS 13+
     DeviceOrientationEvent.requestPermission()
-      .catch(error => {
+      .catch(() => {
         // Only show permission dialog on first load, the browser will remember request after "allow"-ing
         let button = createButton("Click to Allow sensor access");
         button.style('font-size', "38px");
         button.center();
         button.mousePressed(requestPermission);
         // Skip "then"
-        throw error;
+        throw new Error('Ask for the first time');
       })
       .then(() => {
         // Already granted permission
