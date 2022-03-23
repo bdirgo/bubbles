@@ -1,5 +1,5 @@
-let spring = 0.05;
-let gravity = 0.03;
+let spring = 0.025;
+let gravity = 0.05;
 let friction = -0.9;
 
 class Ball {
@@ -55,6 +55,9 @@ class Ball {
       this.vy += gravity * dy;
     } else {
       this.vx += gravity * dx;
+    }
+    if (dy === 0 && dx === 0) {
+      this.vy += gravity;
     }
     this.x += this.vx;
     this.y += this.vy;
