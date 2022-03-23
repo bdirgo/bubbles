@@ -1,4 +1,4 @@
-let spring = 0.025;
+let spring = 0.03;
 let gravity = 0.05;
 let friction = -0.9;
 
@@ -51,12 +51,15 @@ class Ball {
   move() {
     const dx = constrain(rotationY, -5, 5);
     const dy = constrain(rotationX, -5, 5);
-    if (dy > dx) {
+    if (dy > 0) {
       this.vy += gravity * dy;
-    } else {
+    } else if (dy < 0) {
+      this.vy -= gravity * dy;
+    } else if (dx > 0) {
       this.vx += gravity * dx;
-    }
-    if (dy === 0 && dx === 0) {
+    } else if (dx < 0) {
+      this.vx -= gravity * dx;
+    } else {
       this.vy += gravity;
     }
     this.x += this.vx;
