@@ -16,23 +16,21 @@ class Ball {
   collide() {
     for (let i = this.id + 1; i < balls.length; i++) {
       const other = balls[i];
-      if (other.shouldRender) {
-        let dx = other.x - this.x;
-        let dy = other.y - this.y;
-        let distance = sqrt(dx * dx + dy * dy);
-        let minDist = other.diameter / 2 + this.diameter / 2;
-        if (distance < minDist) {
-            let angle = atan2(dy, dx);
-            let targetX = this.x + cos(angle) * minDist;
-            let targetY = this.y + sin(angle) * minDist;
-            let ax = (targetX - other.x) * spring;
-            let ay = (targetY - other.y) * spring;
-            this.vx -= ax;
-            this.vy -= ay;
-            other.vx += ax;
-            other.vy += ay;
-        }
-        }
+      let dx = other.x - this.x;
+      let dy = other.y - this.y;
+      let distance = sqrt(dx * dx + dy * dy);
+      let minDist = other.diameter / 2 + this.diameter / 2;
+      if (distance < minDist) {
+          let angle = atan2(dy, dx);
+          let targetX = this.x + cos(angle) * minDist;
+          let targetY = this.y + sin(angle) * minDist;
+          let ax = (targetX - other.x) * spring;
+          let ay = (targetY - other.y) * spring;
+          this.vx -= ax;
+          this.vy -= ay;
+          other.vx += ax;
+          other.vy += ay;
+      }
     }
   }
 

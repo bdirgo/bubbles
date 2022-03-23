@@ -42,8 +42,10 @@ function draw() {
   background(0);
 
   balls.forEach(ball => {
-    ball.collide();
-    ball.move();
-    ball.display();
+    if (ball.shouldRender) {
+      ball.collide();
+      ball.move();
+      ball.display();
+    }
   });
 }
