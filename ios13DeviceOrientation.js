@@ -1,5 +1,5 @@
 function requestAccess() {
-  console.log("Asking")
+  console.log("asking");
     DeviceOrientationEvent.requestPermission()
       .then(response => {
         if (response === 'granted') {
@@ -9,7 +9,7 @@ function requestAccess() {
         }
       })
       .catch(console.error);
-      this.remove();
+      button.remove();
 }
 function ios13DeviceOrientation() {
   if (
@@ -20,7 +20,7 @@ function ios13DeviceOrientation() {
     DeviceOrientationEvent.requestPermission()
       .catch(() => {
         // Only show permission dialog on first load, the browser will remember request after "allow"-ing
-        let button = createButton("Click to Allow sensor access");
+        button = createButton("Click to Allow sensor access");
         button.style('font-size', "38px");
         button.center();
         button.mousePressed(requestAccess);
@@ -29,10 +29,12 @@ function ios13DeviceOrientation() {
       })
       .catch(console.error)
       .then(() => {
+        console.log("then");
         // Already granted permission
         permissionGranted = true;
       });
   } else {
+    console.log("else");
     permissionGranted = true;
   }
 }

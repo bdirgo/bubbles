@@ -8,6 +8,7 @@ const BALL_WIDTH_MAX = 80;
 let balls = [];
 // ios13
 let permissionGranted = false;
+let button;
 // don't move!
 document.ontouchmove = function(event) {
     event.preventDefault();
@@ -18,9 +19,6 @@ function mousePressed() {
     const ball = balls[i];
     if (ball.contains(mouseX, mouseY)) {
       balls.splice(i, 1);
-    } else {
-      // const b = new Ball(mouseX, mouseY, random(BALL_WIDTH_MIN, BALL_WIDTH_MAX), balls.length);
-      // balls.push(b); // causes a billion balls to spawn XD
     }
   }
   return false
