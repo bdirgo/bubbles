@@ -1,9 +1,6 @@
 let initialNumBalls = 25;
-const BALL_WIDTH_MIN = 60
-const BALL_WIDTH_MAX = 100;
-let spring = 0.05;
-let gravity = 0.03;
-let friction = -0.9;
+const BALL_WIDTH_MIN = 40
+const BALL_WIDTH_MAX = 80;
 let balls = [];
 // ios13
 let permissionGranted = false;
