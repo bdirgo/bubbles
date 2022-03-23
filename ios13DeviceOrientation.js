@@ -11,7 +11,10 @@ function requestPermission() {
       this.remove();
 }
 function ios13DeviceOrientation() {
-  if (typeof(window?.DeviceOrientationEvent) !== undefined && typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function') {
+  if (
+    typeof(window?.DeviceOrientationEvent) !== undefined &&
+    typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function'
+  ) {
     // iOS 13+
     DeviceOrientationEvent.requestPermission()
       .catch(() => {
@@ -23,6 +26,7 @@ function ios13DeviceOrientation() {
         // Skip "then"
         throw new Error('Ask for the first time');
       })
+      .catch(console.error)
       .then(() => {
         // Already granted permission
         permissionGranted = true;
