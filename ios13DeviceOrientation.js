@@ -1,12 +1,9 @@
 function requestPermission() {
-  console.log("asking")
   DeviceOrientationEvent.requestPermission()
     .then(response => {
       if (response === 'granted') {
-        console.log("granted")
         permissionGranted = true;
       } else {
-        console.log("denied")
         permissionGranted = false;
       }
     })
@@ -14,8 +11,11 @@ function requestPermission() {
   this.remove();
 }
 function ios13DeviceOrientation() {
-  if (typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function') {
-    console.log("if");
+  if (
+    window.DeviceOrientationEvent &&
+    window.DeviceOrientationEvent.requestPermission &&
+    typeof(window?.DeviceOrientationEvent?.requestPermission) === 'function'
+  ) {
     // iOS 13+
     DeviceOrientationEvent.requestPermission()
       .catch(() => {
@@ -25,15 +25,13 @@ function ios13DeviceOrientation() {
         button.center();
         button.mousePressed(requestPermission);
         // Skip "then"
-        console.log("button");
+        throw error;
       })
       .then(() => {
-        console.log("then");
         // Already granted permission
         permissionGranted = true;
       });
   } else {
-    console.log("else");
     permissionGranted = true;
   }
 }
