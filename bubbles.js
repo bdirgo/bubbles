@@ -20,7 +20,6 @@ function mousePressed() {
       balls.splice(i, 1);
     }
   }
-  return false
 }
 
 function mouseDragged() {
