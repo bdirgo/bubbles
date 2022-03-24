@@ -32,7 +32,6 @@ function mouseDragged() {
     )
     balls.push(b)
   }
-  return false
 }
 
 function setup() {
